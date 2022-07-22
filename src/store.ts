@@ -1,7 +1,6 @@
-
-import create from 'zustand';
-import { persist } from 'zustand/middleware';
-import { computeGuess, getRandomWord, LetterState } from './word-utils';
+import create from "zustand";
+import { persist } from "zustand/middleware";
+import { computeGuess, getRandomWord, LetterState } from "./word-utils";
 
 export const NUMBER_OF_GUESSES = 6;
 export const WORD_LENGTH = 5;
@@ -14,13 +13,13 @@ interface GuessRow {
 interface StoreState {
   answer: string;
   rows: GuessRow[];
-  gameState: 'playing' | 'won' | 'lost';
+  gameState: "playing" | "won" | "lost";
   keyboardLetterState: { [letter: string]: LetterState };
-  addGuess(guess: string): void;
-  newGame(initialGuess?: string[]): void;
+  addGuess: (guess: string) => void;
+  newGame: (initialGuess?: string[]) => void;
 }
 
-export const useStore = create<StoreState>(
+export const useStore = create<StoreState, any>(
   persist(
     (set, get) => {
       const addGuess = (guess: string) => {
@@ -55,22 +54,22 @@ export const useStore = create<StoreState>(
           rows,
           keyboardLetterState,
           gameState: didWin
-            ? 'won'
+            ? "won"
             : rows.length === NUMBER_OF_GUESSES
-            ? 'lost'
-            : 'playing',
+            ? "lost"
+            : "playing",
         });
       };
 
       return {
         answer: getRandomWord(),
         rows: [],
-        gameState: 'playing',
+        gameState: "playing",
         keyboardLetterState: {},
         addGuess,
         newGame(initialRows = []) {
           set({
-            gameState: 'playing',
+            gameState: "playing",
             answer: getRandomWord(),
             rows: [],
             keyboardLetterState: {},
@@ -81,7 +80,7 @@ export const useStore = create<StoreState>(
       };
     },
     {
-      name: 'reacdle',
+      name: "Wordle",
       getStorage: () => localStorage,
     }
   )

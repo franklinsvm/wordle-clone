@@ -33,6 +33,7 @@ export default function App() {
   }, [guess]);
 
   const isGameOver = state.gameState !== "playing";
+  const hasWon = state.gameState == "won";
 
   let rows = [...state.rows];
 
@@ -70,7 +71,7 @@ export default function App() {
         }}
       />
 
-      {isGameOver && (
+      {/* {isGameOver && (
         <>
           <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity overflow-y-auto h-full w-full"></div>
           <div
@@ -85,6 +86,35 @@ export default function App() {
               className="items-center justify-items-center py-2 mb-6"
             />
 
+            <button
+              className="border border-green-500 rounded bg-green-500 hover:bg-green-600 p-2 mt-4 text-gray-800 shadow h-20 text-lg font-bold"
+              onClick={() => {
+                state.newGame();
+                setGuess("");
+              }}
+            >
+              New Game
+            </button>
+          </div>
+        </>
+      )} */}
+
+      {(isGameOver || hasWon) && (
+        <>
+          <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity overflow-y-auto h-full w-full"></div>
+          <div
+            role="modal"
+            className="absolute bg-white border border-gray-500 rounded text-center
+            w-11/12 h-1/2 p-6 left-0 right-0 mx-auto top-1/4
+           grid grid-rows-3 z-10"
+          >
+            <p className="text-2xl font-bold mt-6">
+              {hasWon ? "Congratulations!" : "Game Over"}
+            </p>
+            <WordRow
+              word={state.answer}
+              className="items-center justify-items-center py-2 mb-6"
+            />
             <button
               className="border border-green-500 rounded bg-green-500 hover:bg-green-600 p-2 mt-4 text-gray-800 shadow h-20 text-lg font-bold"
               onClick={() => {
