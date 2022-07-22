@@ -35,7 +35,7 @@ function CharacterBox({ value, state }: CharacterBoxProps) {
 
   return (
     <span
-      className={`border-2 p-2 uppercase text-center font-extrabold text-4xl before:inline-block before:content-['_'] ${stateStyles} `}
+      className={`border-2 p-2 min-w-full uppercase text-center font-extrabold text-4xl before:inline-block before:content-['_'] ${stateStyles} `}
     >
       {value}
     </span>

@@ -47,86 +47,61 @@ export default function App() {
   rows = rows.concat(Array(guessesRemaining).fill(""));
 
   return (
-    <div className="mx-auto w-96 relative h-screen">
-      <header className="border-b border-gray-400 py-4">
-        <h1 className="text-3xl font-bold text-center uppercase">My Wordle!</h1>
-      </header>
+    <div className="mx-auto relative h-screen bg-gradient-to-r from-emerald-100 to-teal-300">
+      <div className="w-96 mx-auto">
+        <header className="border-b border-gray-400 py-4">
+          <h1 className="text-3xl font-bold text-center uppercase">
+            My Wordle!
+          </h1>
+        </header>
 
-      <main className="grid grid-rows-6 gap-4 my-4">
-        {rows.map((word, index) => (
-          <WordRow
-            key={index}
-            word={word.guess}
-            result={word.result}
-            className={
-              showInvalidGuess && index === currentRow ? "animate-bounce" : ""
-            }
-          />
-        ))}
-      </main>
-
-      <Keyboard
-        onClick={(key) => {
-          addGuessLetter(key);
-        }}
-      />
-
-      {/* {isGameOver && (
-        <>
-          <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity overflow-y-auto h-full w-full"></div>
-          <div
-            role="modal"
-            className="absolute bg-white border border-gray-500 rounded text-center
-            w-11/12 h-1/2 p-6 left-0 right-0 mx-auto top-1/4
-           grid grid-rows-3 z-10"
-          >
-            <p className="text-2xl font-bold mt-6">Game Over</p>
+        <main className="grid grid-rows-6 gap-4 my-4">
+          {rows.map((word, index) => (
             <WordRow
-              word={state.answer}
-              className="items-center justify-items-center py-2 mb-6"
+              key={index}
+              word={word.guess}
+              result={word.result}
+              className={
+                showInvalidGuess && index === currentRow ? "animate-bounce" : ""
+              }
             />
+          ))}
+        </main>
 
-            <button
-              className="border border-green-500 rounded bg-green-500 hover:bg-green-600 p-2 mt-4 text-gray-800 shadow h-20 text-lg font-bold"
-              onClick={() => {
-                state.newGame();
-                setGuess("");
-              }}
-            >
-              New Game
-            </button>
-          </div>
-        </>
-      )} */}
-
-      {(isGameOver || hasWon) && (
-        <>
-          <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity overflow-y-auto h-full w-full"></div>
-          <div
-            role="modal"
-            className="absolute bg-white border border-gray-500 rounded text-center
-            w-11/12 h-1/2 p-6 left-0 right-0 mx-auto top-1/4
+        <Keyboard
+          onClick={(key) => {
+            addGuessLetter(key);
+          }}
+        />
+        {(isGameOver || hasWon) && (
+          <>
+            <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity overflow-y-auto h-full w-full"></div>
+            <div
+              role="modal"
+              className="absolute bg-white border border-gray-500 rounded text-center
+            w-1/4 h-1/2 p-6 left-0 right-0 mx-auto top-1/4
            grid grid-rows-3 z-10"
-          >
-            <p className="text-2xl font-bold mt-6">
-              {hasWon ? "Congratulations!" : "Game Over"}
-            </p>
-            <WordRow
-              word={state.answer}
-              className="items-center justify-items-center py-2 mb-6"
-            />
-            <button
-              className="border border-green-500 rounded bg-green-500 hover:bg-green-600 p-2 mt-4 text-gray-800 shadow h-20 text-lg font-bold"
-              onClick={() => {
-                state.newGame();
-                setGuess("");
-              }}
             >
-              New Game
-            </button>
-          </div>
-        </>
-      )}
+              <p className="text-2xl font-bold mt-6">
+                {hasWon ? "Congratulations!" : "Game Over"}
+              </p>
+              <WordRow
+                word={state.answer}
+                className="items-center justify-items-center py-2 mb-6"
+              />
+              <button
+                className="border border-green-500 rounded bg-green-500 hover:bg-green-600 p-2 mt-4 text-gray-800 shadow h-20 text-lg font-bold"
+                onClick={() => {
+                  state.newGame();
+                  setGuess("");
+                }}
+              >
+                New Game
+              </button>
+            </div>
+          </>
+        )}
+      </div>
     </div>
   );
 }
