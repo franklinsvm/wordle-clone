@@ -79,7 +79,7 @@ export default function App() {
             <div
               role="modal"
               className="absolute bg-white border border-gray-500 rounded text-center
-            w-1/4 sm:w-full h-1/2 p-6 left-0 right-0 mx-auto top-1/4
+            w-2/3 md:w-3/5 lg:w-1/4 h-1/2 p-6 left-0 right-0 mx-auto top-1/4
            grid grid-rows-3 z-10"
             >
               <p className="text-2xl font-bold mt-6">
