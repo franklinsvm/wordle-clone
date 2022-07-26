@@ -47,8 +47,8 @@ export default function App() {
   rows = rows.concat(Array(guessesRemaining).fill(""));
 
   return (
-    <div className="mx-auto relative h-screen sm:h-full bg-gradient-to-r from-emerald-100 to-teal-300">
-      <div className="w-96 sm:max-w-7xl mx-auto">
+    <div className="mx-auto relative h-screen h-screen bg-gradient-to-r from-emerald-100 to-teal-300">
+      <div className=" w-10/12 d:w-96 lg:w-96 mx-auto">
         <header className="border-b border-gray-400 py-4">
           <h1 className="text-3xl font-bold text-center uppercase">
             My Wordle!
