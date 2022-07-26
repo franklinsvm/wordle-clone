@@ -47,8 +47,8 @@ export default function App() {
   rows = rows.concat(Array(guessesRemaining).fill(""));
 
   return (
-    <div className="mx-auto relative h-screen bg-gradient-to-r from-emerald-100 to-teal-300">
-      <div className="w-96 mx-auto">
+    <div className="mx-auto relative h-screen sm:h-full bg-gradient-to-r from-emerald-100 to-teal-300">
+      <div className="w-96 sm:max-w-7xl mx-auto">
         <header className="border-b border-gray-400 py-4">
           <h1 className="text-3xl font-bold text-center uppercase">
             My Wordle!
@@ -79,7 +79,7 @@ export default function App() {
             <div
               role="modal"
               className="absolute bg-white border border-gray-500 rounded text-center
-            w-1/4 h-1/2 p-6 left-0 right-0 mx-auto top-1/4
+            w-1/4 sm:w-full h-1/2 p-6 left-0 right-0 mx-auto top-1/4
            grid grid-rows-3 z-10"
             >
               <p className="text-2xl font-bold mt-6">
